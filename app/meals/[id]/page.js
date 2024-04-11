@@ -1,6 +1,6 @@
 import Link from "next/link";
 
-export default function Share({params}) {
+export default function MealsDetailsPage({params}) {
   return (
     <main>
       <h1>Hello Dinamic {params.id}</h1>{" "}
