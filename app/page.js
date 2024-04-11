@@ -4,7 +4,7 @@ export default function Home() {
   return (
     <main>
       <h1 style={{ color: "white", textAlign: "center" }}>
-        Time to get started!
+        Time to get started! para testar
       </h1>
       <h1>
         <Link href="/community">Community</Link>
