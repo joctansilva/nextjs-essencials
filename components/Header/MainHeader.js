@@ -3,10 +3,11 @@ import Image from "next/image";
 import logoImg from "../../assets/logo.png";
 import classes from "./MainHeader.module.css";
 import MainHeaderBackground from "./Background/MainHeaderBackground";
+import MainHeaderNavLink from "./NavLink/MainHeaderNavLink";
 
 export default function MainHeader() {
   return (
-    <>      
+    <>
       <header className={classes.header}>
         <Link className={classes.logo} href="/">
           <Image src={logoImg} alt="A plate witch food on it" priority />
@@ -15,11 +16,15 @@ export default function MainHeader() {
         <nav className={classes.nav}>
           <ul>
             <li>
-              <Link href="/meals">Browse Meals</Link>
+              <MainHeaderNavLink href="/meals" >
+                Browse Meals
+              </MainHeaderNavLink>
             </li>
             <li>
-              <Link href="/community">Foodies Community</Link>
-            </li>
+              <MainHeaderNavLink href="/community" >
+                Foodies Community
+              </MainHeaderNavLink>
+            </li>     
           </ul>
         </nav>
       </header>
