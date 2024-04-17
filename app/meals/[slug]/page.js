@@ -1,18 +1,37 @@
-import Link from "next/link";
+import classes from "./page.module.css";
+import Image from "next/image";
+import { getMeal } from "../../../lib/meals";
 
-export default function MealsDetailsPage({params}) {
+export default function MealDetailsPage({ params }) {
+  const meal = getMeal(params.mealSlug);
+
+  meal.instructions = meal.instructions.replace(
+    /\n/g,
+    "<br>"
+  );
+
   return (
-    <main>
-      <h1>Hello Dinamic {params.id}</h1>{" "}
-      <h1>
-        <Link href="/">Home</Link>
-      </h1>
-      <h1>
-        <Link href="/community">Community</Link>
-      </h1>
-      <h1>
-        <Link href="/meals">Meals</Link>
-      </h1>
-    </main>
+    <>
+      <header className={classes.header}>
+        <div className={classes.image}>
+          <Image src={meal.image} alt={meal.title} fill />
+        </div>
+        <div className={classes.headerText}>
+          <h1>{meal.title}</h1>
+          <p className={classes.creator}>
+            by <a href={`mailto:${meal.creator_email}`}>{meal.creator}</a>
+          </p>
+          <p className={classes.summary}>{meal.summary}</p>
+        </div>
+      </header>
+      <main>
+        <p
+          className={classes.instructions}
+          dangerouslySetInnerHTML={{
+            __html: meal.instructions,
+          }}
+        ></p>
+      </main>
+    </>
   );
 }
